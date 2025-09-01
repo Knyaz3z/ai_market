@@ -5,37 +5,38 @@ function App() {
 
     return (
         <>
-            Hi! You're cool! You can do everything!
+                        Hi! You're cool! You can do everything!
             Thx for using my template
 
             dont forget add full .gitignore file
 
-            EX.
+            EX. <br/><br/>
 
-            # Logs
-            logs
-            *.log
-            npm-debug.log*
-            yarn-debug.log*
-            yarn-error.log*
-            pnpm-debug.log*
-            lerna-debug.log*
+                # Logs<br/>
+                logs<br/>
+                *.log<br/>
+                npm-debug.log*<br/>
+                yarn-debug.log*<br/>
+                yarn-error.log*<br/>
+                pnpm-debug.log*<br/>
+                lerna-debug.log*<br/>
 
-            node_modules
-            dist
-            dist-ssr
-            *.local
+                # Dependencies and build<br/>
+                node_modules<br/>
+                dist<br/>
+                dist-ssr<br/>
+                *.local<br/>
 
-            # Editor directories and files
-            .vscode/*
-            !.vscode/extensions.json
-            .idea
-            .DS_Store
-            *.suo
-            *.ntvs*
-            *.njsproj
-            *.sln
-            *.sw?
+                # Editor directories and files<br/>
+                .vscode/*<br/>
+                !.vscode/extensions.json<br/>
+                .idea<br/>
+                .DS_Store<br/>
+                *.suo<br/>
+                *.ntvs*<br/>
+                *.njsproj<br/>
+                *.sln<br/>
+                *.sw?<br/>
 
         </>
     )
