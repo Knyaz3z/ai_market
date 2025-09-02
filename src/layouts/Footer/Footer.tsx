@@ -1,5 +1,5 @@
 import type {FC} from 'react'
-import './Footer.module.scss'
+import './Footer.scss'
 
 export type FooterProps = {}
 

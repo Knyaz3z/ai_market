@@ -1,5 +1,5 @@
 import type {FC} from 'react'
-import './Home.module.scss'
+import './Home.scss'
 
 export type HomeProps = {}
 

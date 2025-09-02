@@ -1,121 +1,119 @@
-/* null.scss - универсальный сброс стилей */
-
-/* Box sizing */
+/* Reset margins and padding */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  border: 0;
+  box-sizing: border-box;
 }
 
-/* Remove default list styles */
+/* Remove list styles but allow them to be re-styled */
 ul,
 ol {
   list-style: none;
 }
 
-/* Remove default quotes for blockquotes and quotes */
-blockquote,
-q {
-  quotes: none;
-
-  &::before,
-  &::after {
-    content: '';
-  }
-}
-
-/* Remove default table borders */
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* Remove default font styles */
-body {
-  line-height: 1;
-  font-family: inherit;
-  background: none;
-  color: inherit;
-}
-
-/* Reset anchors */
+/* Remove default link styles but allow re-styling */
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
+}
+
+/* Remove button defaults but allow re-styling */
+button {
+  background: none;
+  border: none;
+  font: inherit;
   cursor: pointer;
 }
 
-/* Reset images */
-img,
-picture,
-video,
-canvas,
-svg {
+/* Remove input defaults but allow re-styling */
+input,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  background: none;
+}
+
+/* Remove image borders and set display */
+img {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-/* Reset form elements */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-  background: none;
-  color: inherit;
-  outline: none;
-  border: none;
-  appearance: none;
+/* Remove table defaults */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-/* Remove button styling in all browsers */
-button {
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
+/* Remove quote defaults */
+blockquote,
+q {
+  quotes: none;
 }
 
-/* Reset fieldset */
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: '';
+  content: none;
+}
+
+/* Remove fieldset defaults */
 fieldset {
   border: none;
-  margin: 0;
-  padding: 0;
 }
 
-/* Reset hr */
-hr {
-  border: none;
-  margin: 0;
-  height: 1px;
-  background: #ccc;
+/* Remove details summary arrow */
+details summary::-webkit-details-marker {
+  display: none;
 }
 
-/* Reset headings */
-h1, h2, h3, h4, h5, h6 {
-  font-size: inherit;
-  font-weight: inherit;
+/* Set sensible defaults for html and body */
+html {
+  scroll-behavior: smooth;
 }
 
-/* Reset small elements */
-small {
-  font-size: 100%;
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Reset sub/sup */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
+/* Remove focus outline for mouse users but keep for keyboard */
+body:not(.user-is-tabbing) button:focus,
+body:not(.user-is-tabbing) input:focus,
+body:not(.user-is-tabbing) select:focus,
+body:not(.user-is-tabbing) textarea:focus {
+  outline: none;
 }
 
-/* Reset textarea */
+/* Remove default styles for media elements */
+audio,
+canvas,
+embed,
+iframe,
+img,
+object,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* Remove textarea resize */
 textarea {
   resize: none;
+}
+
+/* Remove autocomplete styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
 }

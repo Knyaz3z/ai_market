@@ -1,5 +1,5 @@
 import type {FC} from 'react'
-import './Layout.module.scss'
+import './Layout.scss'
 import {Outlet} from "react-router";
 import {Header} from "../Header/Header.tsx";
 import {Footer} from "../Footer/Footer.tsx";

@@ -1,5 +1,5 @@
 import type {FC} from 'react'
-import './News.module.scss'
+import './News.scss'
 
 export type NewsProps = {}
 

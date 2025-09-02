@@ -1,5 +1,5 @@
 import type {FC} from 'react'
-import './NotFound.module.scss'
+import './NotFound.scss'
 
 export type NotFoundProps = {}
 

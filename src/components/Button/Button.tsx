@@ -1,5 +1,5 @@
 import type {FC} from 'react'
-import './Button.module.scss'
+import './Button.scss'
 
 type Variant = 'primary' | 'secondary';
 
