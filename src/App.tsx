@@ -1,42 +1,29 @@
 import './styles/null.scss'
+import './styles/global.scss'
+import {createBrowserRouter, RouterProvider} from "react-router";
+import {Home} from "./pages/Home/Home.tsx";
+import {Layout} from "./layouts/Layout/Layout.tsx";
+import {News} from "./pages/News/News.tsx";
+import {NotFound} from "./pages/NotFound/NotFound.tsx";
+
 
 function App() {
 
+    const router = createBrowserRouter([
+        {
+            path: "/",
+            element: <Layout/>,
+            children: [
+                {index: true, element: <Home/>},
+                {path: 'news', element: <News/>},
+                {path: '*', element: <NotFound/> }
+            ]
+        }
+    ])
 
     return (
         <>
-                        Hi! You're cool! You can do everything!
-            Thx for using my template
-
-            dont forget add full .gitignore file
-
-            EX. <br/><br/>
-
-                # Logs<br/>
-                logs<br/>
-                *.log<br/>
-                npm-debug.log*<br/>
-                yarn-debug.log*<br/>
-                yarn-error.log*<br/>
-                pnpm-debug.log*<br/>
-                lerna-debug.log*<br/>
-
-                # Dependencies and build<br/>
-                node_modules<br/>
-                dist<br/>
-                dist-ssr<br/>
-                *.local<br/>
-
-                # Editor directories and files<br/>
-                .vscode/*<br/>
-                !.vscode/extensions.json<br/>
-                .idea<br/>
-                .DS_Store<br/>
-                *.suo<br/>
-                *.ntvs*<br/>
-                *.njsproj<br/>
-                *.sln<br/>
-                *.sw?<br/>
+            <RouterProvider router={router}/>
 
         </>
     )
