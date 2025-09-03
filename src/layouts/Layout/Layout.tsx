@@ -13,7 +13,11 @@ export const Layout: FC<LayoutProps> = ({}) => {
             <main>
                 <Outlet/>
             </main>
-            <Footer/>
+            <Footer
+                companyName="AIMARKET"
+                contactEmail="test@yandex.ru"
+                contactPhone="+7 (917) 303-85-85"
+            />
         </>
     )
 }

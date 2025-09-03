@@ -5,6 +5,7 @@ import {Services} from "../../components/home/Services/Services.tsx";
 import {Faq} from "../../components/home/Faq/Faq.tsx";
 import {Prices} from "../../components/home/Prices/Prices.tsx";
 import {Contacts} from "../../components/home/Contacts/Contacts.tsx";
+import {DashBoard} from "../../components/home/DashBoard/DashBoard.tsx";
 
 export type HomeProps = {}
 
@@ -43,6 +44,7 @@ export const Home: FC<HomeProps> = ({}) => {
             <Faq/>
             <Prices/>
             <Contacts contacts={yourContacts}/>
+            <DashBoard/>
         </>
     )
 }
