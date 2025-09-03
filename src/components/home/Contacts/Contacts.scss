@@ -1,0 +1,99 @@
+.contacts-block {
+  padding: 4rem 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contacts-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contacts-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.contacts-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contacts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.contact-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  &.clickable {
+    cursor: pointer;
+
+    &:hover {
+      background: #f8f9fa;
+
+      .contact-icon {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+.contact-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.contact-title {
+  font-size: 1.25rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.contact-info {
+  color: #7f8c8d;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .contacts-title {
+    font-size: 2rem;
+  }
+
+  .contacts-subtitle {
+    font-size: 1rem;
+  }
+
+  .contacts-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .contact-card {
+    padding: 1.2rem;
+  }
+}

@@ -1,13 +1,6 @@
 import type {FC} from 'react'
 import './Button.scss'
 
-type Variant = 'primary' | 'secondary';
-
-const variants: Record<Variant, string> = {
-    primary: "btn-primary",
-    secondary: "btn-secondary",
-};
-
 type ButtonProps = {
     label: string,
     variant?: Variant,
@@ -22,14 +15,14 @@ export const Button: FC<ButtonProps> = ({
                                             href
                                         }) => {
 
-    const className = variants[variant]
+
 
     if (isLink) {
         return (
-            <a href={href} className={className}>
+            <a href={href} className={`button ${variant}`}>
                 {label}
             </a>
         )
     }
-    return <button className={`${variant}`}>{label}</button>
+    return <button className={`button ${variant}`}>{label}</button>
 }

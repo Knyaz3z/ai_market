@@ -1,4 +1,4 @@
-import {type FC, useState} from 'react'
+import {type FC, useEffect, useState} from 'react'
 import './Header.scss'
 import {useIsMobile} from "../../hooks/useIsMobile.tsx";
 
@@ -8,6 +8,20 @@ export const Header: FC<HeaderProps> = () => {
     const isMobile = useIsMobile()
     const [isBurgerOpen, setIsBurgerOpen] = useState<boolean>(false)
 
+
+    const breakpoint = 200
+    const [isSmall, setIsSmall] = useState<boolean>(window.scrollY >= breakpoint)
+    useEffect(()=>{
+        const handleScroll = () =>{
+            setIsSmall(window.scrollY > breakpoint)
+        }
+
+        window.addEventListener('scroll', handleScroll)
+
+        return () => window.removeEventListener('scroll', handleScroll)
+
+    }, [breakpoint])
+
     const handleBurger = () => {
         setIsBurgerOpen(!isBurgerOpen)
     }
@@ -15,7 +29,7 @@ export const Header: FC<HeaderProps> = () => {
     if (isMobile) {
         return (
             <header>
-                <nav className='nav-mobile'>
+                <nav className={`nav-mobile ${isSmall ? 'small' : ''}`}>
                     <img src="/AIMARKET_LOGO.svg" alt="logo"/>
                     <svg
                         className={`nav-burger ${isBurgerOpen ? 'open' : ''}`}
@@ -31,7 +45,7 @@ export const Header: FC<HeaderProps> = () => {
                         <path d="M4 6L20 6" stroke="#000000" strokeWidth="2" strokeLinecap="round"/>
                     </svg>
                     <div
-                        className={`nav-menu-overlay ${isBurgerOpen ? 'open' : ''}`}
+                        className={`nav-menu-overlay  ${isBurgerOpen ? 'open' : ''}`}
                         onClick={handleBurger}
                     />
                     <ul className={`nav-links ${isBurgerOpen ? 'open' : ''}`}>
@@ -48,7 +62,7 @@ export const Header: FC<HeaderProps> = () => {
 
     return (
         <header>
-            <nav className='nav'>
+            <nav className={`nav ${isSmall ? 'small' : ''}`}>
                 <img src="/AIMARKET_LOGO.svg" alt="logo"/>
                 <ul className='nav-links'>
                     <li className="nav-items">Главная</li>

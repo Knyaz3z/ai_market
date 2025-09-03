@@ -1,0 +1,14 @@
+.button {
+  border-radius: 50px;
+  color: white;
+  padding: 15px 40px;
+  transition: .3s ease-in-out;
+
+  &.primary {
+    background-color: #0079FA;
+  }
+
+  &:hover {
+    background-color: darken(#0079FA, 5%);
+  }
+}
