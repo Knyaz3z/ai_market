@@ -1,6 +1,7 @@
 import {type FC, useEffect, useState} from 'react'
 import './Header.scss'
 import {useIsMobile} from "../../hooks/useIsMobile.tsx";
+import {Link} from "react-router";
 
 export type HeaderProps = {}
 
@@ -49,6 +50,7 @@ export const Header: FC<HeaderProps> = () => {
                         onClick={handleBurger}
                     />
                     <ul className={`nav-links ${isBurgerOpen ? 'open' : ''}`}>
+                        <Link to={'about'}>О нас</Link>
                         <li className="nav-items">Главная</li>
                         <li className="nav-items">Услуги</li>
                         <li className="nav-items">Условия</li>
@@ -63,11 +65,11 @@ export const Header: FC<HeaderProps> = () => {
     return (
         <header>
             <nav className={`nav ${isSmall ? 'small' : ''}`}>
-                <img src="/AIMARKET_LOGO.svg" alt="logo"/>
+                <Link to={'/'}><img src="/AIMARKET_LOGO.svg" alt="logo"/></Link>
                 <ul className='nav-links'>
-                    <li className="nav-items">Главная</li>
+                    <Link to={'/'} className="nav-items">Главная</Link>
                     <li className="nav-items">Услуги</li>
-                    <li className="nav-items">Условия</li>
+                    <Link to={'about'}>О нас</Link>
                     <li className="nav-items">Статьи</li>
                     <li className="nav-items">Контакты</li>
                 </ul>

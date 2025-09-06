@@ -102,9 +102,9 @@ export const Prices: FC<PricesProps> = ({ className = '' }) => {
     return (
         <section className={`prices ${className}`}>
             <div className="prices__container container">
-                <header className="prices__header">
-                    <h2 className="prices__title">Наши тарифы</h2>
-                    <p className="prices__subtitle">Выберите подходящее решение для вашего бизнеса</p>
+                <header className="prices__header header">
+                    <h2 className="prices__title title">Наши тарифы</h2>
+                    <p className="prices__subtitle subtitle">Выберите подходящее решение для вашего бизнеса</p>
                 </header>
 
                 <div className="prices__grid">

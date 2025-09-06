@@ -45,8 +45,10 @@ export const Contacts: FC<ContactsProps> = ({
     return (
         <section className="contacts-block">
             <div className="contacts-container">
-                <h2 className="contacts-title">{title}</h2>
-                <p className="contacts-subtitle">{subtitle}</p>
+                <header className={'contacts__header header'}>
+                    <h2 className="contacts-title title">{title}</h2>
+                    <p className="contacts-subtitle subtitle">{subtitle}</p>
+                </header>
 
                 <div className="contacts-grid">
                     {contacts.map(contact => {

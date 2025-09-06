@@ -7,6 +7,7 @@ import {News} from "./pages/News/News.tsx";
 import {NotFound} from "./pages/NotFound/NotFound.tsx";
 
 import './styles/global.scss'
+import About from "./pages/About/About.tsx";
 function App() {
 
     const router = createBrowserRouter([
@@ -16,6 +17,7 @@ function App() {
             children: [
                 {index: true, element: <Home/>},
                 {path: 'news', element: <News/>},
+                {path: 'about', element: <About/>},
                 {path: '*', element: <NotFound/> }
             ]
         }
