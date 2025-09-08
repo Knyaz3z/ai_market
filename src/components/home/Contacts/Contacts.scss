@@ -21,6 +21,9 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &:hover {
     transform: translateY(-5px);
@@ -41,7 +44,7 @@
 }
 
 .contact-icon {
-  font-size: 2.5rem;
+  width: 50px;
   margin-bottom: 1rem;
   transition: transform 0.3s ease;
 }

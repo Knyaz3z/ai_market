@@ -53,7 +53,7 @@ const ServiceCard: FC<ServiceCard> = ({ title, imgLink, text }) => {
 
 export const Services: FC<ServicesProps> = ({ className = '' }) => {
     return (
-        <section className={`services ${className}`}>
+        <section id={'services'} className={`services ${className}`}>
             <div className="services__container container">
                 <header className="services__header">
                     <h2 className="services__title">Наши услуги</h2>

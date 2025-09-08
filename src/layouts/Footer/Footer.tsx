@@ -110,7 +110,7 @@ export const Footer: FC<FooterProps> = ({
                                 rel="noopener noreferrer"
                                 aria-label={social.name}
                             >
-                                <span className="social-icon">{social.icon}</span>
+                                <img alt='social' src={social.icon} className="social-icon"/>
                             </a>
                         ))}
                     </div>

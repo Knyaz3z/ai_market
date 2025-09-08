@@ -1,6 +1,7 @@
 import {type FC, useEffect, useState} from 'react'
 import './Header.scss'
 import {useIsMobile} from "../../hooks/useIsMobile.tsx";
+import {useScrollToSection} from "../../hooks/useScrollToSection";
 import {Link} from "react-router";
 
 export type HeaderProps = {}
@@ -8,12 +9,11 @@ export type HeaderProps = {}
 export const Header: FC<HeaderProps> = () => {
     const isMobile = useIsMobile()
     const [isBurgerOpen, setIsBurgerOpen] = useState<boolean>(false)
-
-
+    const scrollTo = useScrollToSection()
     const breakpoint = 200
     const [isSmall, setIsSmall] = useState<boolean>(window.scrollY >= breakpoint)
-    useEffect(()=>{
-        const handleScroll = () =>{
+    useEffect(() => {
+        const handleScroll = () => {
             setIsSmall(window.scrollY > breakpoint)
         }
 
@@ -26,6 +26,11 @@ export const Header: FC<HeaderProps> = () => {
     const handleBurger = () => {
         setIsBurgerOpen(!isBurgerOpen)
     }
+
+    const navItems = [
+        {id: "services", label: "Услуги"},
+        {id: "contacts", label: "Контакты"},
+    ]
 
     if (isMobile) {
         return (
@@ -68,10 +73,10 @@ export const Header: FC<HeaderProps> = () => {
                 <Link to={'/'}><img src="/AIMARKET_LOGO.svg" alt="logo"/></Link>
                 <ul className='nav-links'>
                     <Link to={'/'} className="nav-items">Главная</Link>
-                    <li className="nav-items">Услуги</li>
-                    <Link to={'about'}>О нас</Link>
-                    <li className="nav-items">Статьи</li>
-                    <li className="nav-items">Контакты</li>
+                    <Link to={'about'} className="nav-items">О нас</Link>
+                    <Link to={'articles'} className="nav-items">Статьи</Link>
+                    <Link onClick={() => scrollTo('services')} className="nav-items">{navItems[0].label}</Link>
+                    <Link onClick={() => scrollTo('contacts')} className="nav-items">{navItems[1].label}</Link>
                 </ul>
             </nav>
         </header>

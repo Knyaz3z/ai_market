@@ -15,25 +15,19 @@ const yourContacts = [
         id: 1,
         title: "Телефон",
         inner: "+7 (917) 303-85-85",
-        icon: "📞"
+        icon: "contacts_phone.svg"
     },
     {
         id: 2,
         title: "Email",
         inner: "test@yandex.ru",
-        icon: "✉️"
+        icon: "contacts_mail.svg"
     },
     {
         id: 3,
         title: "Telegram",
-        inner: "@testBot22",
-        icon: "📱"
-    },
-    {
-        id: 4,
-        title: "WhatsApp",
-        inner: "+7 (917) 303-85-85",
-        icon: "💬"
+        inner: "@demetr_matvey",
+        icon: "social_tg.svg"
     }
 ];
 

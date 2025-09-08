@@ -32,20 +32,10 @@ export const Contacts: FC<ContactsProps> = ({
         }
     };
 
-    // Функция для получения иконки по умолчанию в зависимости от типа контакта
-    const getDefaultIcon = (title: string): string => {
-        const lowerTitle = title.toLowerCase();
-        if (lowerTitle.includes('телефон')) return '📞';
-        if (lowerTitle.includes('email') || lowerTitle.includes('почта')) return '✉️';
-        if (lowerTitle.includes('whatsapp')) return '💬';
-        if (lowerTitle.includes('telegram')) return '📱';
-        return '📌';
-    };
-
     return (
         <section className="contacts-block">
             <div className="contacts-container">
-                <header className={'contacts__header header'}>
+                <header id={'contacts'} className={'contacts__header header'}>
                     <h2 className="contacts-title title">{title}</h2>
                     <p className="contacts-subtitle subtitle">{subtitle}</p>
                 </header>
@@ -64,9 +54,7 @@ export const Contacts: FC<ContactsProps> = ({
                                 className={`contact-card ${isClickable ? 'clickable' : ''}`}
                                 onClick={() => isClickable && handleContactClick(contact)}
                             >
-                                <div className="contact-icon">
-                                    {contact.icon || getDefaultIcon(contact.title)}
-                                </div>
+                                <img className={'contact-icon'} src={contact.icon}/>
                                 <h3 className="contact-title">{contact.title}</h3>
                                 <p className="contact-info">{contact.inner}</p>
                             </div>
