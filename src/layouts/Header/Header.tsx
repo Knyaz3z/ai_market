@@ -74,9 +74,10 @@ export const Header: FC<HeaderProps> = () => {
                 <ul className='nav-links'>
                     <Link to={'/'} className="nav-items">Главная</Link>
                     <Link to={'about'} className="nav-items">О нас</Link>
-                    <Link to={'articles'} className="nav-items">Статьи</Link>
-                    <Link onClick={() => scrollTo('services')} className="nav-items">{navItems[0].label}</Link>
-                    <Link onClick={() => scrollTo('contacts')} className="nav-items">{navItems[1].label}</Link>
+                    {/*<Link to={'articles'} className="nav-items">Статьи</Link>*/}
+                    <Link to={'cases'} className="nav-items">Кейсы</Link>
+                    <a onClick={() => scrollTo('services')} className="nav-items">{navItems[0].label}</a>
+                    <a onClick={() => scrollTo('contacts')} className="nav-items">{navItems[1].label}</a>
                 </ul>
             </nav>
         </header>
