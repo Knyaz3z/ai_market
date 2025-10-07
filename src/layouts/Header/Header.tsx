@@ -1,8 +1,8 @@
-import {type FC, useEffect, useState} from 'react'
+import { type FC, useEffect, useState } from 'react'
 import './Header.scss'
-import {useIsMobile} from "../../hooks/useIsMobile.tsx";
-import {useScrollToSection} from "../../hooks/useScrollToSection";
-import {Link} from "react-router";
+import { useIsMobile } from "../../hooks/useIsMobile.tsx"
+import { useScrollToSection } from "../../hooks/useScrollToSection"
+import { Link } from "react-router"
 
 export type HeaderProps = {}
 
@@ -11,32 +11,45 @@ export const Header: FC<HeaderProps> = () => {
     const [isBurgerOpen, setIsBurgerOpen] = useState<boolean>(false)
     const scrollTo = useScrollToSection()
     const breakpoint = 200
-    const [isSmall, setIsSmall] = useState<boolean>(window.scrollY >= breakpoint)
+    const [isSmall, setIsSmall] = useState<boolean>(false)
+
     useEffect(() => {
+        // Инициализация состояния при монтировании
+        setIsSmall(window.scrollY >= breakpoint)
+
         const handleScroll = () => {
             setIsSmall(window.scrollY > breakpoint)
         }
 
         window.addEventListener('scroll', handleScroll)
-
         return () => window.removeEventListener('scroll', handleScroll)
-
     }, [breakpoint])
 
     const handleBurger = () => {
         setIsBurgerOpen(!isBurgerOpen)
     }
 
+    const handleMobileLinkClick = () => {
+        setIsBurgerOpen(false)
+    }
+
+    const handleScrollClick = (sectionId: string) => {
+        scrollTo(sectionId)
+        setIsBurgerOpen(false)
+    }
+
     const navItems = [
-        {id: "services", label: "Услуги"},
-        {id: "contacts", label: "Контакты"},
+        { id: "services", label: "Услуги" },
+        { id: "contacts", label: "Контакты" },
     ]
 
     if (isMobile) {
         return (
             <header>
                 <nav className={`nav-mobile ${isSmall ? 'small' : ''}`}>
-                    <img src="/AIMARKET_LOGO.svg" alt="logo"/>
+                    <Link to="/" onClick={handleMobileLinkClick}>
+                        <img src="/AIMARKET_LOGO.svg" alt="logo" />
+                    </Link>
                     <svg
                         className={`nav-burger ${isBurgerOpen ? 'open' : ''}`}
                         onClick={handleBurger}
@@ -51,16 +64,15 @@ export const Header: FC<HeaderProps> = () => {
                         <path d="M4 6L20 6" stroke="#000000" strokeWidth="2" strokeLinecap="round"/>
                     </svg>
                     <div
-                        className={`nav-menu-overlay  ${isBurgerOpen ? 'open' : ''}`}
+                        className={`nav-menu-overlay ${isBurgerOpen ? 'open' : ''}`}
                         onClick={handleBurger}
                     />
                     <ul className={`nav-links ${isBurgerOpen ? 'open' : ''}`}>
-                        <Link to={'about'}>О нас</Link>
-                        <li className="nav-items">Главная</li>
-                        <li className="nav-items">Услуги</li>
-                        <li className="nav-items">Условия</li>
-                        <li className="nav-items">Статьи</li>
-                        <li className="nav-items">Контакты</li>
+                        <li><Link to="/" className="nav-items" onClick={handleMobileLinkClick}>Главная</Link></li>
+                        <li><Link to="/about" className="nav-items" onClick={handleMobileLinkClick}>О нас</Link></li>
+                        <li><a className="nav-items" onClick={() => handleScrollClick('services')}>Услуги</a></li>
+                        <li><Link to="/news" className="nav-items" onClick={handleMobileLinkClick}>Статьи</Link></li>
+                        <li><a className="nav-items" onClick={() => handleScrollClick('contacts')}>Контакты</a></li>
                     </ul>
                 </nav>
             </header>
@@ -70,15 +82,14 @@ export const Header: FC<HeaderProps> = () => {
     return (
         <header>
             <nav className={`nav ${isSmall ? 'small' : ''}`}>
-                <Link to={'/'}><img src="/AIMARKET_LOGO.svg" alt="logo"/></Link>
-                <ul className='nav-links'>
-                    <Link to={'/'} className="nav-items">Главная</Link>
-                    <Link to={'about'} className="nav-items">О нас</Link>
-                    {/*<Link to={'articles'} className="nav-items">Статьи</Link>*/}
-                    <Link to={'cases'} className="nav-items">Кейсы</Link>
+                <Link to="/"><img src="/AIMARKET_LOGO.svg" alt="logo"/></Link>
+                <div className='nav-links'>
+                    <Link to="/" className="nav-items">Главная</Link>
+                    <Link to="/about" className="nav-items">О нас</Link>
+                    <Link to="/cases" className="nav-items">Кейсы</Link>
                     <a onClick={() => scrollTo('services')} className="nav-items">{navItems[0].label}</a>
                     <a onClick={() => scrollTo('contacts')} className="nav-items">{navItems[1].label}</a>
-                </ul>
+                </div>
             </nav>
         </header>
     )

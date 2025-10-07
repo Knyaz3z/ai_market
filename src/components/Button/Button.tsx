@@ -3,7 +3,7 @@ import './Button.scss';
 
 type ButtonProps = {
     label: string;
-    variant?: Variant;
+    variant?: string;
     isLink: boolean;
     href?: string;
     onClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
