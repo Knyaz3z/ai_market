@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CaseDetails.scss';
-import {useParams} from "react-router";
-import {Button} from "../../components/Button/Button.tsx";
+import { useParams } from 'react-router-dom'; // исправил на react-router-dom
+import { Button } from "../../components/Button/Button.tsx";
+import Modal from "../../components/Modal/Modal.tsx";
+
 
 interface CaseDetailsProps {
-    // add props here
+    // можно добавить пропсы при необходимости
 }
 
 const casesData = [
@@ -32,26 +34,34 @@ const casesData = [
 ];
 
 const CaseDetails: React.FC<CaseDetailsProps> = () => {
+    const { caseId } = useParams<{ caseId: string }>();
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const {caseId} = useParams<{ caseId: string }>()
-    console.log(caseId)
-
-
-    const currentCase = casesData.find((c) => c.id === caseId)
+    const currentCase = casesData.find((c) => c.id === caseId);
 
     if (!currentCase) {
-        return <div className={'case-detail container'}><h1>Кейс не найден</h1></div>
+        return <div className={'case-detail container'}><h1>Кейс не найден</h1></div>;
     }
-    return (
-        <div className={'case-detail container'}>
-            <h1>{currentCase.title}</h1>
-            <img src={currentCase.image} alt={currentCase.title}/>
-            <div>
-                <p>{currentCase.description}</p>
-                <Button label={'Хочу также!'} isLink={false}/>
-            </div>
 
-        </div>
+    return (
+        <>
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            <div className={'case-detail container'}>
+
+
+                <h1>{currentCase.title}</h1>
+                <img src={currentCase.image} alt={currentCase.title} />
+                <div>
+                    <p>{currentCase.description}</p>
+                    <Button
+                        label={'Хочу также!'}
+                        isLink={false}
+                        onClick={() => setIsModalOpen(true)}
+                    />
+                </div>
+            </div>
+        </>
+
     );
 };
 

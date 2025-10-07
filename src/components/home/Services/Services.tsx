@@ -1,18 +1,19 @@
-import type { FC } from 'react'
-import './Services.scss'
-import { Button } from "../../Button/Button.tsx"
+import { type FC, useState } from 'react';
+import './Services.scss';
+import { Button } from "../../Button/Button.tsx";
+import Modal from "../../Modal/Modal.tsx";
 
 export type ServicesProps = {
-    className?: string
-}
+    className?: string;
+};
 
-export type ServiceCard = {
-    title: string
-    imgLink: string
-    text: string
-}
+export type ServiceCardType = {
+    title: string;
+    imgLink: string;
+    text: string;
+};
 
-const servicesData: ServiceCard[] = [
+const servicesData: ServiceCardType[] = [
     {
         title: 'ИИ бизнес-ассистент в Telegram',
         imgLink: '/services_1.webp',
@@ -28,9 +29,13 @@ const servicesData: ServiceCard[] = [
         imgLink: '/services_3.webp',
         text: 'Проконсультирует клиента онлайн, соберет информацию и перенесет в вашу CRM-систему. Активные продажи 24/7.',
     }
-]
+];
 
-const ServiceCard: FC<ServiceCard> = ({ title, imgLink, text }) => {
+type ServiceCardProps = ServiceCardType & {
+    onOpenModal: () => void;
+};
+
+const ServiceCard: FC<ServiceCardProps> = ({ title, imgLink, text, onOpenModal }) => {
     return (
         <article className="services__card">
             <img
@@ -45,15 +50,18 @@ const ServiceCard: FC<ServiceCard> = ({ title, imgLink, text }) => {
                 <p className="services__card-text">{text}</p>
             </div>
             <div className="services__card-button">
-                <Button label="Хочу подробности" isLink={false} />
+                <Button onClick={onOpenModal} label="Хочу подробности" isLink={false}/>
             </div>
         </article>
-    )
-}
+    );
+};
 
 export const Services: FC<ServicesProps> = ({ className = '' }) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
-        <section id={'services'} className={`services ${className}`}>
+        <section id="services" className={`services ${className}`}>
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
             <div className="services__container container">
                 <header className="services__header">
                     <h2 className="services__title">Наши услуги</h2>
@@ -61,10 +69,14 @@ export const Services: FC<ServicesProps> = ({ className = '' }) => {
 
                 <div className="services__grid">
                     {servicesData.map((service, index) => (
-                        <ServiceCard key={index} {...service} />
+                        <ServiceCard
+                            key={index}
+                            {...service}
+                            onOpenModal={() => setIsModalOpen(true)}
+                        />
                     ))}
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};

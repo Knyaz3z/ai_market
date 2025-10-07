@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./About.scss";
 import { Button } from "../../components/Button/Button.tsx";
+import Modal from "../../components/Modal/Modal.tsx";
+
 
 interface TeamMember {
     name: string;
@@ -27,8 +29,12 @@ const team: TeamMember[] = [
 ];
 
 const About: React.FC = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <div className="about">
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
             {/* Hero */}
             <section className="about__hero">
                 <h1>О нас</h1>
@@ -97,7 +103,11 @@ const About: React.FC = () => {
             <section className="about__cta">
                 <h2>Хотите работать с нами?</h2>
                 <p>Свяжитесь с нами и давайте создадим что-то великое вместе.</p>
-                <Button label="Связаться" isLink={true} />
+                <Button
+                    label="Связаться"
+                    isLink={false}
+                    onClick={() => setIsModalOpen(true)}
+                />
             </section>
         </div>
     );

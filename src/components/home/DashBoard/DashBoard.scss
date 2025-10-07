@@ -211,10 +211,32 @@
 
   &.before {
     background: linear-gradient(to top, rgba(231, 76, 60, 0.8), rgba(231, 76, 60, 0.4));
+
+    //&:after {
+    //  content: '';
+    //  background: linear-gradient(to top, rgba(150, 100, 255, 0.8), rgba(46, 100, 200, 0.4));
+    //  height: 15px;
+    //  width: 40px;
+    //  position: absolute;
+    //  bottom: 0;
+    //  left: 50%;
+    //  transform: translate(-50%, 0);
+    //}
   }
 
   &.after {
     background: linear-gradient(to top, rgba(46, 204, 113, 0.8), rgba(46, 204, 113, 0.4));
+
+    //&:after {
+    //  content: '';
+    //  background: linear-gradient(to top, rgba(150, 100, 255, 0.8), rgba(46, 100, 200, 0.4));
+    //  height: 40px;
+    //  width: 40px;
+    //  position: absolute;
+    //  bottom: 0;
+    //  left: 50%;
+    //  transform: translate(-50%, 0);
+    //}
   }
 
   @media (max-width: 768px) {

@@ -1,28 +1,29 @@
-import type {FC} from 'react'
-import './Button.scss'
+import type { FC, MouseEventHandler } from 'react';
+import './Button.scss';
 
 type ButtonProps = {
-    label: string,
-    variant?: Variant,
-    isLink: boolean,
-    href?: string,
+    label: string;
+    variant?: Variant;
+    isLink: boolean;
+    href?: string;
+    onClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
 }
 
 export const Button: FC<ButtonProps> = ({
                                             label,
                                             variant = 'primary',
                                             isLink,
-                                            href
+                                            href,
+                                            onClick
                                         }) => {
-
-
 
     if (isLink) {
         return (
-            <a href={href} className={`button ${variant}`}>
+            <a onClick={onClick} href={href} className={`button ${variant}`}>
                 {label}
             </a>
         )
     }
-    return <button className={`button ${variant}`}>{label}</button>
+
+    return <button onClick={onClick} className={`button ${variant}`}>{label}</button>
 }

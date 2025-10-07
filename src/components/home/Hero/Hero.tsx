@@ -1,18 +1,21 @@
-import type {FC} from 'react'
+import {type FC, useState} from 'react'
 import './Hero.scss'
 import {Button} from "../../Button/Button.tsx";
+import Modal from "../../Modal/Modal.tsx";
 
 export type HeroProps = {}
 
 export const Hero: FC<HeroProps> = ({}) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     return (
         <section className="hero">
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
             {/* Фон вынесен в основной контейнер hero */}
             <div className="hero__content container">
                 <div className="hero__text">
                     <h1 className="hero__title">Автоматизация бизнес-процессов при помощи ИИ</h1>
                     <p className="hero__subtitle">Отдайте рутинные задачи искусственному интеллекту</p>
-                    <Button label="Проконсультируйтесь с ИИ" isLink={false} />
+                    <Button onClick={() => setIsModalOpen(true)} label="Проконсультируйтесь с ИИ" isLink={false} />
                 </div>
 
                 <div className="hero__features">

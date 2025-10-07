@@ -63,8 +63,8 @@ export const DashBoard: FC<DashBoardProps> = ({
                                 <span>0</span>
                                 <span>5</span>
                                 <span>10</span>
-                                <span>15</span>
-                                <span>20</span>
+                                {/*<span>15</span>*/}
+                                {/*<span>20</span>*/}
                             </div>
 
                             <div className="chart-content">

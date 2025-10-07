@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Cases.scss";
-import {Link} from "react-router";
+
+import { Link } from "react-router-dom";
+import Modal from "../../components/Modal/Modal.tsx"; // исправил импорт на react-router-dom
 
 interface Case {
     id: number;
@@ -41,10 +43,10 @@ const categories = [
     { key: "automation", label: "Автоматизация" },
 ];
 
-
-
 const Cases: React.FC = () => {
     const [activeCategory, setActiveCategory] = useState<string>("all");
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const filteredCases =
         activeCategory === "all"
             ? casesData
@@ -52,6 +54,8 @@ const Cases: React.FC = () => {
 
     return (
         <div className="cases container">
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
             <header className="cases__header">
                 <h1 className="cases__title">Наши кейсы</h1>
                 <p className="cases__subtitle">
@@ -89,7 +93,12 @@ const Cases: React.FC = () => {
             <div className="cases__cta">
                 <h2>Хотите такой же результат?</h2>
                 <p>Мы создадим решение под ваши задачи и бюджет.</p>
-                <button className="cases__cta-btn">Связаться с нами</button>
+                <button
+                    className="cases__cta-btn"
+                    onClick={() => setIsModalOpen(true)}
+                >
+                    Связаться с нами
+                </button>
             </div>
         </div>
     );

@@ -1,18 +1,18 @@
-import type { FC } from 'react'
-import './Prices.scss'
-import {Button} from "../../Button/Button.tsx";
+import { type FC, useState } from 'react';
+import './Prices.scss';
+import { Button } from "../../Button/Button.tsx";
+import Modal from "../../Modal/Modal.tsx";
 
+export type PriceCardType = {
+    id: number;
+    title: string;
+    price: string;
+    list: string[];
+    desc: string;
+    popular?: boolean;
+};
 
-export type PriceCard = {
-    id: number
-    title: string
-    price: string
-    list: string[]
-    desc: string
-    popular?: boolean
-}
-
-const pricesData: PriceCard[] = [
+const pricesData: PriceCardType[] = [
     {
         id: 1,
         title: 'Разработка автоматизации',
@@ -54,18 +54,20 @@ const pricesData: PriceCard[] = [
         ],
         desc: 'Разработка и запуск лендинга для вашего бизнеса'
     }
-]
+];
 
 export type PricesProps = {
-    className?: string
-}
+    className?: string;
+};
 
-const PriceCard: FC<PriceCard> = ({ title, price, list, desc, popular }) => {
+type PriceCardProps = PriceCardType & {
+    onOpenModal: () => void;
+};
+
+const PriceCard: FC<PriceCardProps> = ({ title, price, list, desc, popular, onOpenModal }) => {
     return (
         <article className={`prices__card ${popular ? 'prices__card--popular' : ''}`}>
-            {popular && (
-                <div className="prices__badge">Популярный</div>
-            )}
+            {popular && <div className="prices__badge">Популярный</div>}
 
             <div className="prices__card-header">
                 <h3 className="prices__card-title">{title}</h3>
@@ -91,16 +93,20 @@ const PriceCard: FC<PriceCard> = ({ title, price, list, desc, popular }) => {
                 <Button
                     label={popular ? "Заказать" : "Подробнее"}
                     isLink={false}
-                    variant={"primary"}
+                    variant="primary"
+                    onClick={onOpenModal}
                 />
             </div>
         </article>
-    )
-}
+    );
+};
 
 export const Prices: FC<PricesProps> = ({ className = '' }) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <section className={`prices ${className}`}>
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
             <div className="prices__container container">
                 <header className="prices__header header">
                     <h2 className="prices__title title">Наши тарифы</h2>
@@ -109,10 +115,14 @@ export const Prices: FC<PricesProps> = ({ className = '' }) => {
 
                 <div className="prices__grid">
                     {pricesData.map((price) => (
-                        <PriceCard key={price.id} {...price} />
+                        <PriceCard
+                            key={price.id}
+                            {...price}
+                            onOpenModal={() => setIsModalOpen(true)}
+                        />
                     ))}
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};
